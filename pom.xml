@@ -454,6 +454,8 @@
     <c-client-openssl>yes</c-client-openssl>
     <c-client-sasl>yes</c-client-sasl>
 
+    <harnessArgLine></harnessArgLine>
+
   </properties>
 
   <dependencyManagement>
@@ -704,8 +706,10 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <configuration>
+              <useSystemClassLoader>false</useSystemClassLoader>
               <trimStackTrace>false</trimStackTrace>
               <redirectTestOutputToFile>${redirectTestOutputToFile}</redirectTestOutputToFile>
+              <argLine>@{argLine} ${harnessArgLine}</argLine>
           </configuration>
         </plugin>
         <plugin>
