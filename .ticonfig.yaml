@@ -1,0 +1,5 @@
+config:
+  ignore:
+    - ".ticonfig.yaml"
+    - "**/*.md"
+    - "**/*.txt"
