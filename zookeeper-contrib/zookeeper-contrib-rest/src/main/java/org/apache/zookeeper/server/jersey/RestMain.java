@@ -126,6 +126,7 @@ public class RestMain {
            @Override
            public void run() {
                main.stop();
+               System.out.println("");
                System.out.println("Got exit request. Bye.");
            }
        });
