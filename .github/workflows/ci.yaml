@@ -40,7 +40,5 @@ jobs:
       with:
         java-version: 11
         distribution: 'temurin'
-    - name: Run Tests
-      run: mvn verify -DskipTests -Dmaven.test.failure.ignore=true
-    - name: Run Unit Tests
-      run: mvn -B test --file pom.xml
+    - name: Run Test Tests
+      run:  mvn test -T 2C -Dmaven.test.failure.ignore=true --fail-at-end -DfailIfNoTests=false
