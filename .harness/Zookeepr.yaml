@@ -57,4 +57,4 @@ pipeline:
                         paths:
                           - "**/*.xml"
         strategy:
-          parallelism: 4
+          parallelism: 3
