@@ -37,6 +37,7 @@ import org.junit.jupiter.api.Test;
  */
 public class TestApacheCuratorCompatibility {
     private static final int TIMEOUT_MS = 5000;
+    private static final int TIMEOUT_MS111 = 5000;
 
     @Test
     public void testBasicUsageOfApisAndRecipes() throws Exception {
