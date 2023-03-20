@@ -1,0 +1,57 @@
+pipeline:
+  name: Zookeepr
+  identifier: Zookeepr
+  projectIdentifier: pranavt1
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: pranavgithub
+        repoName: zookeeper
+        build: <+input>
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: echo Hello
+              - step:
+                  type: RunTests
+                  name: ti
+                  identifier: ti
+                  spec:
+                    language: Java
+                    buildTool: Maven
+                    args: install -T 132 -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -fae
+                    runOnlySelectedTests: true
+                    preCommand: |-
+                      # env
+                      `which java` -XX:+PrintFlagsFinal -version | grep -iE 'HeapSize|PermSize|ThreadStackSize'
+
+                      echo "Downloading latest agent from constant-pool-stack branch"
+                      wget https://elasticbeanstalk-us-east-1-734046833946.s3.amazonaws.com/java-agent.jar -O /tmp/engine/java/java-agent.jar
+                      ls -l /tmp/engine/java/
+                    postCommand: ls
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/*.xml"
