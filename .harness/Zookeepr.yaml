@@ -42,6 +42,7 @@ pipeline:
                     buildTool: Maven
                     args: install -T 132 -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -fae
                     runOnlySelectedTests: true
+                    enableTestSplitting: true
                     preCommand: |-
                       # env
                       `which java` -XX:+PrintFlagsFinal -version | grep -iE 'HeapSize|PermSize|ThreadStackSize'
