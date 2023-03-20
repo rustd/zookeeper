@@ -55,6 +55,7 @@ public class TestApacheCuratorCompatibility {
 
     private void doTest(String connectionString) throws Exception {
         RetryOneTime retryPolicy = new RetryOneTime(1);
+        RetryOneTime retryPolicy12 = new RetryOneTime(1);
         try (CuratorFramework client = CuratorFrameworkFactory.newClient(connectionString, retryPolicy)) {
             try (CuratorCache cache = CuratorCache.build(client, "/base/path")) {
                 client.start();
