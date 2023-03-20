@@ -1,0 +1,14 @@
+inputSet:
+  name: Branch
+  identifier: Branch
+  orgIdentifier: default
+  projectIdentifier: pranavt1
+  pipeline:
+    identifier: Zookeepr
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
