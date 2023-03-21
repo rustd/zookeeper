@@ -31,7 +31,9 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: buildjet-4vcpu-ubuntu-2204
+
 
     steps:
     - uses: actions/checkout@v3
@@ -40,5 +42,8 @@ jobs:
       with:
         java-version: 11
         distribution: 'temurin'
+    - name: MachineStatus
+      run:  lscpu
     - name: Run Test Tests
       run:  mvn test -T 2C -Dmaven.test.failure.ignore=true --fail-at-end -DfailIfNoTests=false
+      
